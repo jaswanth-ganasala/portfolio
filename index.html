@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaswanth Kumar Ganasala | AI/ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: rgba(120,120,200,0.15);
+    --border2: rgba(120,120,200,0.3);
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b9d;
+    --text: #f0eeff;
+    --muted: #8888aa;
+    --faint: #3a3a5c;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; color: var(--accent2);
+    letter-spacing: 0.1em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 13px; letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 7rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--accent2);
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-secondary {
+    border: 0.5px solid var(--border2);
+    color: var(--text);
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .stat-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .badge-cloud {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+  }
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+  .badge-purple { background: rgba(108,99,255,0.15); color: #a89fff; border: 0.5px solid rgba(108,99,255,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.12); color: #5eefd4; border: 0.5px solid rgba(0,212,170,0.25); }
+  .badge-pink   { background: rgba(255,107,157,0.12); color: #ff9ec4; border: 0.5px solid rgba(255,107,157,0.25); }
+  .badge-amber  { background: rgba(251,191,36,0.12); color: #fcd34d; border: 0.5px solid rgba(251,191,36,0.25); }
+
+  /* ─── SECTION SHELL ─── */
+  section { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; }
+  .section-header { margin-bottom: 3rem; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: var(--accent2); text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .section-label::before {
+    content: '//';
+    opacity: 0.5;
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience { max-width: 1200px; }
+  .exp-container { display: flex; flex-direction: column; gap: 2rem; }
+  .exp-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .exp-card:hover { border-color: var(--border2); }
+  .exp-card.current::after {
+    content: 'Current';
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.1em;
+    background: rgba(0,212,170,0.15);
+    color: var(--accent2);
+    border: 0.5px solid rgba(0,212,170,0.3);
+    padding: 3px 10px; border-radius: 3px;
+  }
+  .exp-header {
+    display: flex; align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  .exp-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+  }
+  .exp-company {
+    font-size: 14px; color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: var(--muted);
+  }
+  .exp-bullets {
+    margin-top: 1.25rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+    list-style: none;
+  }
+  .exp-bullets li {
+    font-size: 14px; color: var(--muted);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.65;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent); font-size: 12px;
+  }
+  .exp-bullets strong { color: var(--text); }
+  .exp-metrics {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .metric-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 5px 14px; border-radius: 100px;
+    background: rgba(108,99,255,0.12);
+    color: #a89fff;
+    border: 0.5px solid rgba(108,99,255,0.25);
+  }
+  .metric-pill.teal {
+    background: rgba(0,212,170,0.1);
+    color: #5eefd4;
+    border-color: rgba(0,212,170,0.22);
+  }
+  .metric-pill.pink {
+    background: rgba(255,107,157,0.1);
+    color: #ff9ec4;
+    border-color: rgba(255,107,157,0.22);
+  }
+
+  /* ─── PROJECTS ─── */
+  #projects { max-width: 1200px; }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+  .project-accent {
+    width: 32px; height: 3px; border-radius: 2px;
+    margin-bottom: 1.25rem;
+  }
+  .pa-purple { background: var(--accent); }
+  .pa-teal   { background: var(--accent2); }
+  .pa-pink   { background: var(--accent3); }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .project-org {
+    font-size: 12px; color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 1rem;
+  }
+  .project-desc {
+    font-size: 14px; color: var(--muted);
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+  .project-stack {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .tech-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px; border-radius: 3px;
+    background: var(--surface2);
+    color: var(--muted);
+    border: 0.5px solid var(--faint);
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 13px; color: var(--accent);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 0.75rem; }
+  .project-link .arrow { font-size: 16px; }
+
+  /* ─── SKILLS ─── */
+  #skills { max-width: 1200px; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-group {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+  }
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .skill-list {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    list-style: none;
+  }
+  .skill-list li {
+    font-size: 13px;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 0.5px solid var(--faint);
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+
+  /* ─── GITHUB SECTION ─── */
+  #github-section { max-width: 1200px; }
+  .github-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 20px;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .github-intro h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  .github-intro p {
+    color: var(--muted); font-size: 15px; line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .github-repos {
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .repo-item {
+    background: var(--surface2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    display: flex; align-items: center; justify-content: space-between;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .repo-item:hover { border-color: var(--accent); }
+  .repo-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; color: var(--accent);
+  }
+  .repo-desc {
+    font-size: 12px; color: var(--muted);
+    margin-top: 2px;
+  }
+  .repo-lang {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--muted);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .lang-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .lang-python { background: #3572A5; }
+  .lang-js { background: #f1e05a; }
+
+  /* ─── CONTACT ─── */
+  #contact { max-width: 800px; text-align: center; margin-inline: auto; }
+  #contact h2 { margin-bottom: 1rem; }
+  #contact p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-bottom: 2.5rem; }
+  .contact-links {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.85rem 1.75rem;
+    border: 0.5px solid var(--border2);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: rgba(108,99,255,0.08); }
+  .contact-link svg { width: 18px; height: 18px; opacity: 0.7; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 3rem;
+    border-top: 0.5px solid var(--border);
+    color: var(--faint);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+  }
+
+  /* ─── BG DECORATION ─── */
+  .bg-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.12;
+  }
+  .bg-glow-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; right: -200px; }
+  .bg-glow-2 { width: 400px; height: 400px; background: var(--accent2); bottom: 20%; left: -150px; }
+  nav, section, #hero { position: relative; z-index: 1; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero { padding: 7rem 1.5rem 3rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    section { padding: 4rem 1.5rem; }
+    .github-card { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">gjk.ai</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="https://github.com/jaswanth-ganasala" target="_blank">GitHub</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-tag">GenAI · LLM Systems · Agentic AI</div>
+      <h1>Jaswanth<br><em>Kumar</em><br>Ganasala</h1>
+      <p class="hero-desc">
+        Generative AI &amp; ML Engineer with 5+ years building production LLM applications, RAG pipelines, and agentic workflows at enterprise scale.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="https://linkedin.com/in/jaswanth-k-ganasala" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-num">94%</div>
+          <div class="stat-label">BERT classifier accuracy via LoRA</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">45%</div>
+          <div class="stat-label">Faster query resolution w/ RAG</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">89%</div>
+          <div class="stat-label">Fraud detection precision</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2K+</div>
+          <div class="stat-label">Daily AI chatbot conversations</div>
+        </div>
+      </div>
+      <div class="badge-cloud">
+        <span class="badge badge-purple">LangChain</span>
+        <span class="badge badge-teal">LangGraph</span>
+        <span class="badge badge-purple">RAG</span>
+        <span class="badge badge-teal">AWS Bedrock</span>
+        <span class="badge badge-pink">OpenAI GPT-4</span>
+        <span class="badge badge-amber">LoRA / PEFT</span>
+        <span class="badge badge-purple">Pinecone</span>
+        <span class="badge badge-teal">FastAPI</span>
+        <span class="badge badge-pink">MLflow</span>
+        <span class="badge badge-amber">Apache Kafka</span>
+        <span class="badge badge-purple">RAGAS</span>
+        <span class="badge badge-teal">HuggingFace</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <div class="section-label">Career</div>
+    <h2>Experience</h2>
+  </div>
+  <div class="exp-container">
+
+    <div class="exp-card current">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Generative AI &amp; ML Engineer</div>
+          <div class="exp-company">Appian Corporation · USA</div>
+        </div>
+        <div class="exp-period">Jan 2024 – Present</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Owned full ML lifecycle as primary AI engineer — architecture, model selection, training, deployment, and production reliability for an enterprise insurance platform.</li>
+        <li>Built enterprise <strong>RAG pipeline</strong> with LangChain, Pinecone, semantic chunking, and cross-encoder re-ranking — serving <strong>12 departments</strong> with 38% improved retrieval precision.</li>
+        <li>Fine-tuned <strong>BERT classifier via LoRA/PEFT</strong> on proprietary claim data, reaching <strong>94% accuracy</strong> (up from 71% rule-based system).</li>
+        <li>Deployed <strong>agentic AI triage</strong> using LangGraph + AWS Step Functions — reduced processing time by 35%, freed 28% adjuster capacity.</li>
+        <li>Built <strong>real-time fraud detection</strong> on Kafka using Isolation Forest — 89% precision, 41% fewer false-positive escalations.</li>
+        <li>Delivered <strong>AI chatbot</strong> using OpenAI function-calling + React.js/WebSockets — 2,000+ daily conversations at 88% containment rate.</li>
+        <li>Established <strong>RAGAS CI/CD</strong> evaluation harness for faithfulness, answer relevance, and context precision monitoring.</li>
+      </ul>
+      <div class="exp-metrics">
+        <span class="metric-pill teal">45% Faster Queries</span>
+        <span class="metric-pill">94% Classifier Accuracy</span>
+        <span class="metric-pill pink">89% Fraud Precision</span>
+        <span class="metric-pill teal">30% Latency Reduction</span>
+        <span class="metric-pill">AWS Certified</span>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Software Engineer — ML Integration &amp; Full-Stack</div>
+          <div class="exp-company">KPIT Technologies · India</div>
+        </div>
+        <div class="exp-period">Jan 2020 – Jul 2022</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Integrated ML scoring service outputs into workforce platform UI — surfaced model predictions as real-time autofill suggestions and risk indicators.</li>
+        <li>Built <strong>NLP-powered document search</strong> feature for internal policy retrieval with iterative relevance tuning.</li>
+        <li>Developed Python ETL pipelines and data preprocessing workflows feeding backend ML scoring services.</li>
+        <li>Built Angular/SQL dashboards automating manual spreadsheet-based metric reporting for operations leads.</li>
+        <li>Supported anomaly detection and risk scoring workflows with business-rule filters and review queue routing.</li>
+      </ul>
+      <div class="exp-metrics">
+        <span class="metric-pill">Angular · Java · Spring Boot</span>
+        <span class="metric-pill teal">Python · NLP · SQL</span>
+        <span class="metric-pill pink">ML Integration</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <div class="section-label">Work</div>
+    <h2>Featured Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-accent pa-purple"></div>
+      <div class="project-title">GenAI Insurance Document Intelligence Platform</div>
+      <div class="project-org">Appian Corporation · 2024–Present</div>
+      <p class="project-desc">
+        Production RAG system ingesting 50,000+ insurance documents into Pinecone with semantic chunking and cross-encoder re-ranking. Fine-tuned BERT via LoRA for 94% accuracy document classification. HIPAA-compliant guardrails with PII scrubbing and hallucination detection.
+      </p>
+      <div class="project-stack">
+        <span class="tech-tag">Python</span><span class="tech-tag">LangChain</span><span class="tech-tag">GPT-4</span>
+        <span class="tech-tag">HuggingFace</span><span class="tech-tag">LoRA/PEFT</span><span class="tech-tag">Pinecone</span>
+        <span class="tech-tag">FastAPI</span><span class="tech-tag">RAGAS</span><span class="tech-tag">MLflow</span>
+        <span class="tech-tag">Redis</span><span class="tech-tag">AWS Bedrock</span>
+      </div>
+      <a href="https://github.com/jaswanth-ganasala/genai-insurance-rag" target="_blank" class="project-link">
+        View on GitHub <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-accent pa-teal"></div>
+      <div class="project-title">Agentic Claim Triage &amp; Fraud Detection System</div>
+      <div class="project-org">Appian Corporation · 2024</div>
+      <p class="project-desc">
+        Multi-step agentic workflows using LangGraph + AWS Step Functions for automated claim routing. Real-time Isolation Forest fraud detection on Kafka streams at 89% precision. XGBoost claim approval model with SHAP explainability for HIPAA-compliant auditability.
+      </p>
+      <div class="project-stack">
+        <span class="tech-tag">LangGraph</span><span class="tech-tag">AWS Step Functions</span><span class="tech-tag">Kafka</span>
+        <span class="tech-tag">Isolation Forest</span><span class="tech-tag">XGBoost</span><span class="tech-tag">SHAP</span>
+        <span class="tech-tag">FastAPI</span><span class="tech-tag">Spring Boot</span><span class="tech-tag">MLflow</span>
+      </div>
+      <a href="https://github.com/jaswanth-ganasala/agentic-claim-triage" target="_blank" class="project-link">
+        View on GitHub <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-accent pa-pink"></div>
+      <div class="project-title">ML-Integrated Internal Operations Platform</div>
+      <div class="project-org">KPIT Technologies · 2020–2022</div>
+      <p class="project-desc">
+        Full-stack internal tooling suite with Angular/JSF frontend integrating ML scoring services. Surfaces risk flags and autofill predictions from ML models to operational forms. Python ETL pipelines and SQL reporting replacing manual spreadsheet workflows.
+      </p>
+      <div class="project-stack">
+        <span class="tech-tag">Angular</span><span class="tech-tag">Python</span><span class="tech-tag">Java</span>
+        <span class="tech-tag">Spring Boot</span><span class="tech-tag">SQL</span><span class="tech-tag">NLP</span>
+        <span class="tech-tag">REST APIs</span><span class="tech-tag">Jenkins</span>
+      </div>
+      <a href="https://github.com/jaswanth-ganasala/ml-operations-platform" target="_blank" class="project-link">
+        View on GitHub <span class="arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <div class="section-label">Stack</div>
+    <h2>Technical Skills</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Gen AI / LLMs</div>
+      <ul class="skill-list">
+        <li>OpenAI GPT-4/4o</li><li>Anthropic Claude</li>
+        <li>AWS Bedrock</li><li>LLaMA 2/3</li>
+        <li>Mistral</li><li>HuggingFace</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">LLM Fine-Tuning</div>
+      <ul class="skill-list">
+        <li>LoRA</li><li>QLoRA</li><li>PEFT</li>
+        <li>Instruction Tuning</li><li>HF Trainer API</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">AI Frameworks</div>
+      <ul class="skill-list">
+        <li>LangChain</li><li>LangGraph</li><li>LlamaIndex</li>
+        <li>AutoGen</li><li>CrewAI</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">RAG &amp; Vector DBs</div>
+      <ul class="skill-list">
+        <li>Pinecone</li><li>Weaviate</li><li>FAISS</li>
+        <li>ChromaDB</li><li>pgvector</li><li>Hybrid Search</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">ML &amp; NLP</div>
+      <ul class="skill-list">
+        <li>PyTorch</li><li>scikit-learn</li><li>XGBoost</li>
+        <li>spaCy</li><li>BERT</li><li>SHAP</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">MLOps</div>
+      <ul class="skill-list">
+        <li>MLflow</li><li>RAGAS</li><li>TruLens</li>
+        <li>DVC</li><li>A/B Testing</li><li>CI/CD</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Backend &amp; APIs</div>
+      <ul class="skill-list">
+        <li>Python</li><li>FastAPI</li><li>Java 11/17</li>
+        <li>Spring Boot</li><li>Apache Kafka</li><li>Redis</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Cloud &amp; DevOps</div>
+      <ul class="skill-list">
+        <li>AWS (Bedrock, SageMaker, Lambda)</li>
+        <li>Azure OpenAI</li><li>Docker</li>
+        <li>Kubernetes</li><li>Jenkins</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB -->
+<section id="github-section">
+  <div class="section-header">
+    <div class="section-label">Open Source</div>
+    <h2>GitHub</h2>
+  </div>
+  <div class="github-card">
+    <div class="github-intro">
+      <h3>github.com/<br>jaswanth-ganasala</h3>
+      <p>All project implementations, including production RAG pipelines, agentic workflow patterns, and ML integration code are available on GitHub with full documentation.</p>
+      <a href="https://github.com/jaswanth-ganasala" target="_blank" class="btn-primary" style="display:inline-block">Visit GitHub ↗</a>
+    </div>
+    <div class="github-repos">
+      <a href="https://github.com/jaswanth-ganasala/genai-insurance-rag" target="_blank" class="repo-item">
+        <div>
+          <div class="repo-name">genai-insurance-rag</div>
+          <div class="repo-desc">Enterprise RAG pipeline · LangChain · Pinecone · BERT LoRA</div>
+        </div>
+        <div class="repo-lang"><span class="lang-dot lang-python"></span>Python</div>
+      </a>
+      <a href="https://github.com/jaswanth-ganasala/agentic-claim-triage" target="_blank" class="repo-item">
+        <div>
+          <div class="repo-name">agentic-claim-triage</div>
+          <div class="repo-desc">LangGraph · Kafka fraud detection · XGBoost SHAP</div>
+        </div>
+        <div class="repo-lang"><span class="lang-dot lang-python"></span>Python</div>
+      </a>
+      <a href="https://github.com/jaswanth-ganasala/llm-evaluation-harness" target="_blank" class="repo-item">
+        <div>
+          <div class="repo-name">llm-evaluation-harness</div>
+          <div class="repo-desc">RAGAS CI/CD · faithfulness · answer relevance scoring</div>
+        </div>
+        <div class="repo-lang"><span class="lang-dot lang-python"></span>Python</div>
+      </a>
+      <a href="https://github.com/jaswanth-ganasala/ml-operations-platform" target="_blank" class="repo-item">
+        <div>
+          <div class="repo-name">ml-operations-platform</div>
+          <div class="repo-desc">Angular · Spring Boot · NLP search · ETL pipelines</div>
+        </div>
+        <div class="repo-lang"><span class="lang-dot lang-js"></span>JavaScript</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="justify-content:center">Connect</div>
+  <h2>Get In Touch</h2>
+  <p>Available for senior AI/ML engineering roles, consulting, and collaboration on LLM and agentic AI systems.</p>
+  <div class="contact-links">
+    <a href="mailto:kumargjk14@gmail.com" class="contact-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      kumargjk14@gmail.com
+    </a>
+    <a href="https://linkedin.com/in/jaswanth-k-ganasala" target="_blank" class="contact-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/jaswanth-ganasala" target="_blank" class="contact-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      GitHub
+    </a>
+    <a href="tel:+14013552520" class="contact-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18C.01.07.98-.02 2.01 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+      +1 401 355 2520
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2024 Jaswanth Kumar Ganasala · GenAI &amp; ML Engineer · AWS Certified Developer – Associate</p>
+</footer>
+
+</body>
+</html>
